@@ -253,3 +253,21 @@ body {
   .container{
 	background-color:#f1f1f1
   }
+
+  #footer {
+    padding: 10px;
+    text-align: center;
+	position: absolute;
+	bottom: 0;
+    font-size: 11px;
+}
+#footer > li.first {
+    border-left: none;
+}
+
+#footer > li {
+    display: inline;
+    border-left: solid 1px #758190;
+    padding: 0 10px;
+    color: #758190;
+}
