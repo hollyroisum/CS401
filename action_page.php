@@ -13,8 +13,6 @@
   $query = $dao->getUser($user);
   $result = $query->fetchObject();
 
-  echo "this is here";
-
   $password_in_the_database = "abc123";
   if ($result->password != $_POST["password"]) {
     $_SESSION['message'] = "Error, the password was incorrect.";
@@ -24,4 +22,6 @@
     $_SESSION['logged_in'] = true;
     header("Location: index.php");
   }
+
+  header("Location: index.php");
 ?>
