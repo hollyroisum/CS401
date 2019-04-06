@@ -16,4 +16,11 @@ class Dao {
         }
         return $conn;
     }
+
+    public function getUser ($userName) {
+        $conn = $this->getConnection();
+        return $conn->query("select *  from user where email = {$userName}", PDO::FETCH_ASSOC);
+      }
+
+      
 }
