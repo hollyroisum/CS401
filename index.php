@@ -77,7 +77,7 @@
         <form class="modal-content animate" action="/action_page.php" method="post">
             <div class="container">
                 <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="username" required input value="<?php echo isset($_SESSION['form_input']['username']) ? $_SESSION['form_input']['username'] : ''; ?>" id="username">
+                <input type="text" placeholder="Enter 00000000Username" name="username" required input value="<?php echo isset($_SESSION['form_input']['username']) ? $_SESSION['form_input']['username'] : ''; ?>" id="username">
 
                 <label for="password"><b>Password</b></label>
                 <input type="password" id="password" placeholder="Enter Password" name="password" required >
