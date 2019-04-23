@@ -1,7 +1,6 @@
 <?php
-    session_start();
+  session_start();
 ?>
-
 
 <html>
 
@@ -14,11 +13,6 @@
 
 <header>
     <title>Break Up Letter Generator Home Page</title>
-
-    <?php
-    if(isset($_SESSION["message"]))
-        echo $_SESSION["message"];
-    ?>
 </header>
 
 <body>
@@ -32,17 +26,20 @@
         </span>
         <span class="header-right">
             <a class="active" href="index.php">Home</a>
-            <a href="about.html">About</a>
-            <a href="profile.html">My Profile</a>
-            <button id="login_button" onclick="document.getElementById('id01').style.display='block'">Login</button>
-
+            <a href="about.php">About</a>
+            <a href="profile.php">My Profile</a>
+            <?php if (isset($_SESSION["access_granted"]) && $_SESSION["access_granted"]): ?>
+                <a href="logout-handler.php">Logout</a>
+            <?php else: ?>
+                <a href="login.php">Login</a>
+            <?php endif; ?>
         </span>
     </div>
 
     <div class="content">
         <h2>Input the following information and click submit to generate a breakup letter!</h2>
 
-        <form>
+        <form action="submit-handler.php" method="POST">
             Name of person you are breaking up with: <br>
             <input type="text" name="breakupname"><br>
             How do you feel about this breakup? <br>
@@ -71,45 +68,10 @@
         </form>
     </div>
 
-
-    <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-            <div class="container">
-                <label for="username"><b>Username</b></label>
-                <input type="text" placeholder="Enter 00000000Username" name="username" required input value="<?php echo isset($_SESSION['form_input']['username']) ? $_SESSION['form_input']['username'] : ''; ?>" id="username">
-
-                <label for="password"><b>Password</b></label>
-                <input type="password" id="password" placeholder="Enter Password" name="password" required >
-
-                <button type="submit">Login</button>
-
-            </div>
-
-            <div class="container">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'"
-                    class="cancelbtn">Cancel</button>
-                <span class="password">Forgot <a href="#">password?</a></span>
-            </div>
-        </form>
-    </div>
-
     <div id="footer">
         <li class="first">&copy;2019 Holly Roisum</li>
         <li><a href="https://breakupletter.herokuapp.com">Breakup Letter Generator</a></li>
     </div>
-
-    <script>
-        // Get the modal
-        var modal = document.getElementById('id01');
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 
 </body>
 

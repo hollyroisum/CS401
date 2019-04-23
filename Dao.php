@@ -22,5 +22,18 @@ class Dao {
         return $conn->query("select *  from user where email = {$userName}", PDO::FETCH_ASSOC);
       }
 
+      public function userIsValid ($username, $password) {
+        $conn = $this->getConnection();
+        return $conn->query("SELECT COUNT(*) From `user` where user.email = '$username' and user.password = '$password'");
+    }
+
+  //   public function getUserPassword ($username) {
+  //     $conn = $this->getConnection();
+  //     $sth = $conn->prepare("SELECT user.password From user WHERE user.email = (:username)");
+  //     $sth->bindParam(":username", $username);
+  //     $sth->execute();
+  //     $result = $sth->fetch(PDO::FETCH_OBJ);
+  //     return $result->password;
+  // }
       
 }

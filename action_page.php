@@ -1,27 +1,66 @@
 <?php
   session_start();
-  // Pretend i'm looking this up in a database
+
+  require_once 'Dao.php';
+
+  function sanitized($input) {
+ 
+    $search = array(
+      '@<script[^>]*?>.*?</script>@si',   // Strip out javascript
+      '@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
+      '@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
+      '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
+    );
+   
+      $output = preg_replace($search, '', $input);
+      return $output;
+    }
 
   $dao = new Dao();
   $conn = $dao->getConnection();
-  $user = $_POST["username"];
-  $pass = $_POST["password"];
+  $user = sanitized($_POST["username"]);
+  $pass = sanitized($_POST["password"]);
+  //$hash = $dao->getUserPassword($user);
 
-  //check to make sure theyre not null
+  $count = $dao->userIsValid($_POST["username"], $_POST["password"]);
 
-  //query
-  $query = $dao->getUser($user);
-  $result = $query->fetchObject();
+  //validate the data
+if(empty($_POST["username"])){
+  $status = "Please enter a valid username";
+  $_SESSION["status"] = $status;
+  $_SESSION["access_granted"] = false;
+  header("Location:login.php");
+  exit;
+}
+else if(empty($_POST["password"])){
+  $status = "Please enter a valid password.";
+  $_SESSION["status"] = $status;
+  $_SESSION["email_preset"] = $_POST["username"];
+  $_SESSION["access_granted"] = false;
+  header("Location:login.php");
+  exit;
+}
+//success!
+else if ($count->fetchColumn()>0) {
+//else if (password_verify($pass, $hash)) {
+  $status = "YOU LOGGED IN! GO YOU!"; //DELETE LATER
+  $_SESSION["status"] = $status;      //DELETE LATER
+  $_SESSION["access_granted"] = true;
+  //$_SESSION["email_preset"] = $_POST["username"];
+  $_SESSION["email_preset"] = $user;
+  header("Location:index.php");
+  exit;
+} 
+//hmmm...maybe a bad email or password?
+else {
+  $status = "That email and password combination doesn't exist";
+  $_SESSION["status"] = $status;
+  //$_SESSION["email_preset"] = $_POST["username"];
+  $_SESSION["email_preset"] = $user;
+  $_SESSION["access_granted"] = false;
+  //$_SESSION["hash"] = $hash;
+  header("Location:login.php");
+  exit; //do i need all these exit things?? can try to delete later and see.... 
+}
 
-  $password_in_the_database = "abc123";
-  if ($result->password != $_POST["password"]) {
-    $_SESSION['message'] = "Error, the password was incorrect.";
-    header("Location: index.php");
-    exit();
-  } else {
-    $_SESSION['logged_in'] = true;
-    header("Location: index.php");
-  }
-
-  header("Location: index.php");
 ?>
