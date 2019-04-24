@@ -4,12 +4,18 @@
   if (!isset($_SESSION["access_granted"])) {
     header("Location: login.php");
   }
+
+  $email = "";
+if (isset($_SESSION["email_preset"])) {
+  $email = $_SESSION["email_preset"];
+}
 ?>
 
 <html>
 
 <head>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow" rel="stylesheet">
     <link rel='icon'
         href="http://mediad.publicbroadcasting.net/p/khpr/files/styles/medium/public/201902/broken_heart.png"
         type='image/x-icon' />
@@ -46,25 +52,31 @@
             <span>Username:</span>
         </div>
         <div>
-            <span>useremail@email.com</span>
-            <span>
-                <button id="change_email">Change Username</button>
-            </span>
+            <span> <?php echo $email?></span>
         </div>
         <br>
-        <div>
-            <span>User password:</span>
-        </div>
-        <div>
-            <span>**************</span>
-            <span>
-                <button id="change_password">Change Password</button>
-            </span>
-        </div>
 
         <h2>Saved Letters</h2>
         <p>
-            A list of your saved letters will go here.
+            <?php
+                  require_once 'Dao.php';
+                  $dao = new Dao();
+                  $conn = $dao->getConnection();
+                  $result = $dao->getUser($email);
+                  while($row = $result->fetch())
+                  {
+                      $id = $row['id'];
+                      $letters = $dao->getLetters($id);
+                      echo "<table>";
+                      while($row1 = $letters->fetch())
+                      {
+                          echo "<tr><td>" . $row1['letter'] . "</td></tr>";
+                          //echo $row1['letter'];
+                          //echo "<br>";
+                      }
+                      echo "</table>";
+                  }
+            ?>
         </p>
 
     </div>

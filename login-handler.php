@@ -20,7 +20,6 @@
   $conn = $dao->getConnection();
   $user = sanitized($_POST["username"]);
   $pass = sanitized($_POST["password"]);
-  //$hash = $dao->getUserPassword($user);
 
   $count = $dao->userIsValid($_POST["username"], $_POST["password"]);
 
@@ -42,16 +41,11 @@ else if(empty($_POST["password"])){
 }
 //success!
 else if ($count->fetchColumn()>0) {
-//else if (password_verify($pass, $hash)) {
-  $status = "YOU LOGGED IN! GO YOU!"; //DELETE LATER
-  $_SESSION["status"] = $status;      //DELETE LATER
   $_SESSION["access_granted"] = true;
-  //$_SESSION["email_preset"] = $_POST["username"];
   $_SESSION["email_preset"] = $user;
   header("Location:index.php");
   exit;
 } 
-//hmmm...maybe a bad email or password?
 else {
   $status = "That email and password combination doesn't exist";
   $_SESSION["status"] = $status;

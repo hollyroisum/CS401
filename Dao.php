@@ -19,12 +19,27 @@ class Dao {
 
     public function getUser ($userName) {
         $conn = $this->getConnection();
-        return $conn->query("select *  from user where email = {$userName}", PDO::FETCH_ASSOC);
+        return $conn->query("SELECT id FROM user where user.email = '$userName'");
       }
 
       public function userIsValid ($username, $password) {
         $conn = $this->getConnection();
         return $conn->query("SELECT COUNT(*) From `user` where user.email = '$username' and user.password = '$password'");
+    }
+
+    public function addLetter ($user_id, $letter){
+      $conn = $this->getConnection();
+      $saveQuery = "INSERT INTO letter (user_id, letter) values (:user_id, :letter)";
+      $q = $conn->prepare($saveQuery);
+      $q->bindParam(":user_id", $user_id);
+      $q->bindParam(":letter", $letter);
+      $q->execute();
+    }
+
+    public function getLetters ($user_id)
+    {
+      $conn = $this->getConnection();
+      return $conn->query("SELECT letter FROM letter WHERE user_id = $user_id");
     }
 
   //   public function getUserPassword ($username) {
