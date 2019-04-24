@@ -51,25 +51,38 @@
 
         <form action="submit-handler.php" method="POST" id="frm">
             <label for="breakupname">Name of person you are breaking up with:</label>  <br>
-            <input type="text" name="breakupname" id='breakupname' pattern="[A-Z a-z-'.]*" title="Names Only Please" required><br>
+            <input type="text" name="breakupname" id='breakupname' pattern="[A-Z a-z-'.]*" title="Names Only " required><br>
+            <label for="time">How long have you been together?</label>  <br>
+            <input type="text" name="time" id='time' pattern="[A-Z a-z-'.0-9]*" title="Only enter a time frame" required><br>
             <label for="type">How do you feel about this breakup?</label> <br>
             <select name="type" id='type'>
                 <option>Really Excited</option>
-                <option>Meh, don't really care</option>
-                <option>I've never been more betrayed in my life</option>
+                <option>Indifferent</option>
+                <option>Abosolutely Heartbroken</option>
             </select><br>
             <label for="fault">Whos fault is it?</label> <br>
             <select name="fault" id='fault'>
-                <option>All me</option>
-                <option>THEM!</option>
+                <option>Me</option>
+                <option>You</option>
+                <option>You And That Hoe You've Been Seeing Behind My Back</option>
+                <option>Circumstances Out Of Our Control</option>
             </select><br>
             <label for="describe" id='describe'>Which best describes the person you're breaking up with?</label> <br>
             <select name="describe">
-                <option>Extremely nice</option>
-                <option>Total loser</option>
-                <option>Liar and a cheater</option>
-                <option>Too nice</option>
+                <option>Not My Type</option>
+                <option>A Deadbeat loser</option>
+                <option>A Liar and A Cheater</option>
+                <option>Too Nice</option>
+                <option>Okay, I Guess</option>
             </select><br>
+            <label for="farewell" id='farewell'>Parting Wishes:</label> <br>
+            <select name="farewell">
+                <option>Find Someone Else</option>
+                <option>Burn In Hell</option>
+                <option>Do Midly Well In Life But Not Better Than Me</option>
+            </select><br>
+            <label for="uname">Your Name:</label>  <br>
+            <input type="text" name="uname" id='uname' pattern="[A-Z a-z-'.]*" title="Names Only " required><br>
             <p>
                 More options will go here in time!
             </p>

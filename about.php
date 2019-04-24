@@ -38,12 +38,18 @@
     </div>
 
     <div class="content">
-        <h2>About page content title</h2>
+        <h2>How Come A Breakup Letter Generator?</h2>
 
         <p>
-            Here is the about page. Where I will write super cool stuff about this website. <br>
-            Like why I thought of it or who would like to use it.
+            At the beginning of the semester I was dating someone that I wanted to break up with but he was too nice
+            and would not take "breakup" as an option. So when I was thinking of website ideas for this class I kept coming back to the idea of
+            a website that would breakup with my boyfriend for me. That is the inspiration for this website.
         </p>
+        <h2>How Do I Use This Website??</h2>
+        <p>
+            Use the navigation bar at the top of the page to naviagte to the different pages.
+        </p>
+
     </div>
 
     <div id="footer">

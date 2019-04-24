@@ -25,12 +25,17 @@ function sanitized($input) {
       return $output;
     }
 
-$text = sanitized($_POST['breakupname']);
-$text1 = sanitized($_POST['type']);
-$text2 = sanitized($_POST['fault']);
-$text3 = sanitized($_POST['describe']);
-$letter = "Dear " . $text . "\n I wanted you to know how I feel: " . $text1 . 
-    ". and its all because of " . $text2 . ". Through our relationship you have always been " . $text3 . " but now I need to move on; And so do you." ;
+$breakupname = sanitized($_POST['breakupname']);
+$time = sanitized($_POST['time']);
+$type = sanitized($_POST['type']);
+$fault = sanitized($_POST['fault']);
+$describe = sanitized($_POST['describe']);
+$farewell = sanitized($_POST['farewell']);
+$uname = sanitized($_POST['uname']);
+
+$letter = "Dear " . $breakupname . ",\n Even though we have only been together for " . $time . 
+    " I think It's time we go our seperate ways. I personally feel " . $type . " about this breakup. I want you to know this breakup is all because of  " 
+    . $fault . ". Youre just " . $describe . ". I hope you " . $farewell . "!\n (Not) Yours Truly, " . $uname;
 
   require_once 'Dao.php';
 
