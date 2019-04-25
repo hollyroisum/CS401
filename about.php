@@ -45,11 +45,22 @@
             and would not take "breakup" as an option. So when I was thinking of website ideas for this class I kept coming back to the idea of
             a website that would breakup with my boyfriend for me. That is the inspiration for this website.
         </p>
-        <h2>How Do I Use This Website??</h2>
+        <h2>How Do I Use This Website?</h2>
         <p>
             Use the navigation bar at the top of the page to naviagte to the different pages.
         </p>
-
+        <p>
+            The 'Home' page is where you can follow the prompts and click the "submit" button to generate a breakup letter.
+        </p>
+        <p>
+            The 'My Profile' page is where you can view your username and saved letters.
+        </p>
+        <p>
+            The 'Login' page is where you can log into the website. At this time there is no registration so you will not be able to create an account. You can only login if you are part of an extremely exclusive group of people that have login credentials.
+        </p>
+        <p>
+            Honestly if you don't know how to use this website, either I need to refresh on Web Design and Usability principles or you need to take your head out of your ass.
+        </p>
     </div>
 
     <div id="footer">

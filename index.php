@@ -47,7 +47,7 @@
     </div>
 
     <div class="content">
-        <h2>Input the following information and click submit to generate a breakup letter!</h2>
+        <h2>Login and Input the following information; then click submit to generate a breakup letter!</h2>
 
         <form action="submit-handler.php" method="POST" id="frm">
             <label for="breakupname">Name of person you are breaking up with:</label>  <br>
