@@ -1,7 +1,7 @@
 <?php
   session_start();
 
-    if (!isset($_SESSION["access_granted"])) {
+    if (!isset($_SESSION["access_granted"]) || !$_SESSION["access_granted"]) {
         $status = "Please log in first!";
         $_SESSION["status"] = $status;
         header("Location: index.php");
@@ -35,7 +35,7 @@ $uname = sanitized($_POST['uname']);
 
 $letter = "Dear " . $breakupname . ",\n Even though we have only been together for " . $time . 
     " I think It's time we go our seperate ways. I personally feel " . $type . " about this breakup. I want you to know this breakup is all because of  " 
-    . $fault . ". Youre just " . $describe . ". I hope you " . $farewell . "!\n (Not) Yours Truly, " . $uname;
+    . $fault . ". You're just " . $describe . ". I hope you " . $farewell . "!\n (Not) Yours Truly, " . $uname;
 
   require_once 'Dao.php';
 

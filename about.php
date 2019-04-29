@@ -50,7 +50,7 @@
             Use the navigation bar at the top of the page to naviagte to the different pages.
         </p>
         <p>
-            The 'Home' page is where you can follow the prompts and click the "submit" button to generate a breakup letter.
+            The 'Home' page is where you can follow the prompts and click the "submit" button to generate a breakup letter. At this time you must be logged in first before you can generate and save letters.
         </p>
         <p>
             The 'My Profile' page is where you can view your username and saved letters.

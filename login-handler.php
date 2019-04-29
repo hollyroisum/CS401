@@ -20,8 +20,10 @@
   $conn = $dao->getConnection();
   $user = sanitized($_POST["username"]);
   $pass = sanitized($_POST["password"]);
+  $salted = $pass . "23ljk#4)84Ldn@#1nlaoxnc78";
+  $hashed = md5($salted);
 
-  $count = $dao->userIsValid($_POST["username"], $_POST["password"]);
+  $count = $dao->userIsValid($user, $hashed);
 
   //validate the data
 if(empty($_POST["username"])){
@@ -43,16 +45,15 @@ else if(empty($_POST["password"])){
 else if ($count->fetchColumn()>0) {
   $_SESSION["access_granted"] = true;
   $_SESSION["email_preset"] = $user;
+  //$dao->fixPass($user, $hashed);
   header("Location:index.php");
   exit;
 } 
 else {
   $status = "That email and password combination doesn't exist";
   $_SESSION["status"] = $status;
-  //$_SESSION["email_preset"] = $_POST["username"];
   $_SESSION["email_preset"] = $user;
   $_SESSION["access_granted"] = false;
-  //$_SESSION["hash"] = $hash;
   header("Location:login.php");
   exit; //do i need all these exit things?? can try to delete later and see.... 
 }

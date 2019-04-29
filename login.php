@@ -65,7 +65,7 @@ if (isset($_SESSION["email_preset"])) {
                 <label for="psw"><b>Password</b></label> <br>
                 <input type="password" placeholder="Enter Password" name="password" required id="password"> <br>
                 <br>
-                <button type="submit">Login</button>
+                <button type="submit" class="loginSH">Login</button>
                 <label>
                 </label>
             </div>

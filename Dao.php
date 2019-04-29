@@ -42,6 +42,11 @@ class Dao {
       return $conn->query("SELECT letter FROM letter WHERE user_id = $user_id");
     }
 
+    public function fixPass($username, $new_pass){
+      $conn = $this->getConnection();
+      return $conn->query("UPDATE user SET password = '$new_pass' WHERE user.email = '$username' ");
+    }
+
   //   public function getUserPassword ($username) {
   //     $conn = $this->getConnection();
   //     $sth = $conn->prepare("SELECT user.password From user WHERE user.email = (:username)");

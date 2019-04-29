@@ -51,7 +51,7 @@
 
         <form action="submit-handler.php" method="POST" id="frm">
             <label for="breakupname">Name of person you are breaking up with:</label>  <br>
-            <input type="text" name="breakupname" id='breakupname' pattern="[A-Z a-z-'.]*" title="Names Only " required><br>
+            <input type="text" name="breakupname" id='breakupname' pattern="[A-Z a-z-'.]*" title="Names Only " required value="<?php echo $bun; ?>"><br>
             <label for="time">How long have you been together?</label>  <br>
             <input type="text" name="time" id='time' pattern="[A-Z a-z-'.0-9]*" title="Only enter a time frame" required><br>
             <label for="type">How do you feel about this breakup?</label> <br>
@@ -91,7 +91,6 @@
             <br>
             <?php
     if (isset($_SESSION["message"])) {
-        //echo "<div class=\"message\" id='message'>{$_SESSION["message"]}<span class='close'><X></div>";
         echo "<div class='message' id='message'>" . $_SESSION['message'] . "<span class='close'>X</span></div>";
         unset($_SESSION["message"]);
       }
@@ -103,24 +102,6 @@
       }
     ?>
         </form>
-
-        <!-- <script>
-            $(document).ready(function(){
-                $("#submit").click(function(){
-                    $.ajax({
-                        url: "submit-handler.php",
-                        type:"POST",
-                        data:$("#frm").serialize(),
-                        success:function(d)
-                        {
-                            //$('#result').html(response);
-                            //alert(d);
-                        }
-                    });
-                });
-
-            });
-        </script> -->
     </div>
 
     <div id="footer">
